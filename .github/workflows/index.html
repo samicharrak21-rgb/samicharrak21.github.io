@@ -1,0 +1,215 @@
+<!DOCTYPE html> 
+<html lang="ar" dir="rtl"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Sami Charrak | Portfolio</title> 
+    <script src="https://cdn.tailwindcss.com"></script> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"> 
+    <style> 
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap'); 
+        body { font-family: 'Cairo', sans-serif; scroll-behavior: smooth; } 
+
+        .glass-card {
+            background: rgba(24, 24, 27, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: #10b981;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.1);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #10b981, #059669);
+            transition: 0.3s;
+        }
+        .btn-primary:hover { opacity: 0.9; transform: scale(1.02); }
+
+        /* Light Mode */
+        body.light { background-color: #f1f5f9; color: #0f172a; } 
+        body.light .glass-card { background: white; border-color: #e2e8f0; }
+        body.light .text-zinc-400 { color: #64748b; }
+        body.light .lang-btn { background: white; border-color: #e2e8f0; color: #0f172a; }
+    </style>
+</head> 
+<body class="bg-zinc-950 text-white min-h-screen pb-12 transition-colors duration-300">
+    
+    <header class="p-6 flex justify-between items-center max-w-5xl mx-auto">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-emerald-500 rounded-xl flex items-center justify-center font-bold text-xl text-white">S</div>
+            <span class="text-xl font-bold tracking-tight">Sami Charrak</span>
+        </div>
+        <div class="flex gap-3">
+            <button id="langToggle" class="lang-btn w-10 h-10 rounded-full bg-zinc-900 flex items-center justify-center border border-white/10 font-bold text-sm transition-colors hover:text-emerald-500">
+                EN
+            </button>
+            <button id="modeToggle" class="w-10 h-10 rounded-full bg-zinc-900 flex items-center justify-center border border-white/10 transition-colors">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 pt-10">
+        <section class="text-center mb-16">
+            <div class="w-32 h-32 mx-auto mb-6 relative">
+                <div class="absolute inset-0 bg-emerald-500 rounded-full blur-2xl opacity-20"></div>
+                <img src="https://i.ibb.co/tTPcDHW4/553495465-17859491163506495-1535949731710281375-n.jpg" 
+                     class="w-full h-full object-cover rounded-full border-4 border-emerald-500 relative z-10 shadow-2xl">
+            </div>
+            <h1 class="text-4xl font-extrabold mb-2" data-translate="name">سامي شراك</h1>
+            <p class="text-emerald-400 font-semibold text-lg mb-4" data-translate="role">مطور واجهات أمامية ومبرمج بوتات ديسكورد</p>
+            <div class="flex justify-center gap-4">
+                <a href="https://www.instagram.com/s.xqg" target="_blank" class="text-2xl hover:text-pink-500 transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://x.com/samicharrak21" target="_blank" class="text-2xl hover:text-emerald-500 transition-colors"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://github.com/samicharrak-stack" target="_blank" class="text-2xl hover:text-emerald-400 transition-colors"><i class="fa-brands fa-github"></i></a>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold mb-6 flex items-center justify-center gap-3">
+                <i class="fa-solid fa-brain text-emerald-500"></i> <span data-translate="skillsTitle">المهارات والمعارف</span>
+            </h2>
+            <div class="flex flex-wrap justify-center gap-3">
+                <span class="px-4 py-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-500 font-bold text-sm shadow-lg shadow-emerald-500/5" data-translate="skill1">تطوير الواجهات (Front-End)</span>
+                <span class="px-4 py-2 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-400 font-bold text-sm shadow-lg shadow-indigo-500/5" data-translate="skill2">تطوير بوتات ديسكورد</span>
+                <span class="px-4 py-2 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-500 font-bold text-sm shadow-lg shadow-amber-500/5" data-translate="skill3">استخدام الذكاء الاصطناعي (AI)</span>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold mb-8 flex items-center gap-3">
+                <i class="fa-solid fa-rocket text-emerald-500"></i> <span data-translate="projectsTitle">مشاريع حية (Live)</span>
+            </h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <a href="https://samicharrak211.netlify.app/" target="_blank" class="glass-card p-6 rounded-3xl block group">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="p-3 bg-emerald-500/10 rounded-2xl text-emerald-500"><i class="fa-solid fa-globe text-2xl"></i></div>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-zinc-600 group-hover:text-emerald-500 transition-colors"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2" data-translate="proj1Title">الموقع الشخصي v1</h3>
+                    <p class="text-zinc-400 text-sm leading-relaxed" data-translate="proj1Desc">نموذج لموقع شخصي متكامل تم رفعه واستضافته على Netlify.</p>
+                </a>
+
+                <a href="https://samicharrak21.netlify.app/" target="_blank" class="glass-card p-6 rounded-3xl block group">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="p-3 bg-blue-500/10 rounded-2xl text-blue-500"><i class="fa-solid fa-link text-2xl"></i></div>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-zinc-600 group-hover:text-blue-500 transition-colors"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2" data-translate="proj2Title">رابط البايو المخصص</h3>
+                    <p class="text-zinc-400 text-sm leading-relaxed" data-translate="proj2Desc">صفحة هبوط احترافية مخصصة لمنصات التواصل الاجتماعي.</p>
+                </a>
+
+                <a href="https://daywen.netlify.app/" target="_blank" class="glass-card p-6 rounded-3xl block group">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="p-3 bg-amber-500/10 rounded-2xl text-amber-500"><i class="fa-solid fa-book-open text-2xl"></i></div>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-zinc-600 group-hover:text-amber-500 transition-colors"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2" data-translate="proj3Title">ديوان الأندلس</h3>
+                    <p class="text-zinc-400 text-sm leading-relaxed" data-translate="proj3Desc">موقع مخصص للقصائد والموشحات الأندلسية الأصيلة.</p>
+                </a>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <div class="glass-card p-8 rounded-[2rem] border-indigo-500/20 relative overflow-hidden group">
+                <div class="absolute -right-10 -top-10 text-indigo-500/10 text-9xl rotate-12 group-hover:rotate-0 transition-transform duration-700">
+                    <i class="fa-brands fa-discord"></i>
+                </div>
+                <div class="relative z-10">
+                    <h2 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                        <i class="fa-brands fa-discord text-indigo-500"></i> <span data-translate="discordTitle">سيرفر الديسكورد والبوت</span>
+                    </h2>
+                    <p class="text-zinc-400 mb-6 max-w-lg" data-translate="discordDesc">
+                        انضم إلى مجتمعنا على ديسكورد لتجربة البوت الاحترافي الشامل (حماية، إدراة، وفعاليات).
+                    </p>
+                    <a href="https://discord.gg/Psp5pT2M" target="_blank" 
+                       class="inline-flex items-center gap-3 bg-[#5865F2] hover:bg-[#4752C4] px-8 py-3 rounded-2xl font-bold transition-all text-white">
+                        <span data-translate="discordBtn">دخول السيرفر</span> <i class="fa-solid fa-plus"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="mt-20 text-center text-zinc-500 text-sm">
+        <p data-translate="footer">© 2026 Sami Charrak | Developed with Passion</p>
+    </footer>
+
+    <script>
+        // Dark/Light Mode Toggle
+        const modeBtn = document.getElementById('modeToggle');
+        modeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light');
+            modeBtn.innerHTML = document.body.classList.contains('light') ? '<i class="fa-solid fa-sun text-amber-500"></i>' : '<i class="fa-solid fa-moon"></i>';
+        });
+
+        // Translation Dictionary
+        const translations = {
+            ar: {
+                name: "سامي شراك",
+                role: "مطور واجهات أمامية ومبرمج بوتات ديسكورد",
+                skillsTitle: "المهارات والمعارف",
+                skill1: "تطوير الواجهات (Front-End)",
+                skill2: "تطوير بوتات ديسكورد",
+                skill3: "استخدام الذكاء الاصطناعي (AI)",
+                projectsTitle: "مشاريع حية (Live)",
+                proj1Title: "الموقع الشخصي v1",
+                proj1Desc: "نموذج لموقع شخصي متكامل تم رفعه واستضافته على Netlify.",
+                proj2Title: "رابط البايو المخصص",
+                proj2Desc: "صفحة هبوط احترافية مخصصة لمنصات التواصل الاجتماعي.",
+                proj3Title: "ديوان الأندلس",
+                proj3Desc: "موقع مخصص للقصائد والموشحات الأندلسية الأصيلة.",
+                discordTitle: "سيرفر الديسكورد والبوت",
+                discordDesc: "انضم إلى مجتمعنا على ديسكورد لتجربة البوت الاحترافي الشامل (حماية، إدراة، وفعاليات).",
+                discordBtn: "دخول السيرفر",
+                footer: "© 2026 Sami Charrak | Developed with Passion"
+            },
+            en: {
+                name: "Sami Charrak",
+                role: "Front-End Developer & Discord Bot Creator",
+                skillsTitle: "Skills & Knowledge",
+                skill1: "Front-End Development",
+                skill2: "Discord Bot Creation",
+                skill3: "Artificial Intelligence (AI) Usage",
+                projectsTitle: "Live Projects",
+                proj1Title: "Personal Website v1",
+                proj1Desc: "A complete personal website template hosted on Netlify.",
+                proj2Title: "Custom Bio Link",
+                proj2Desc: "A professional landing page customized for social media platforms.",
+                proj3Title: "Diwan Al-Andalus",
+                proj3Desc: "A dedicated website for authentic Andalusian poems and Muwashshahat.",
+                discordTitle: "Discord Server & Bot",
+                discordDesc: "Join our Discord community to experience the comprehensive professional bot (Security, Management, and Events).",
+                discordBtn: "Join Server",
+                footer: "© 2026 Sami Charrak | Developed with Passion"
+            }
+        };
+
+        // Language Toggle Logic
+        let currentLang = 'ar';
+        const langBtn = document.getElementById('langToggle');
+
+        langBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            
+            // Change Document Direction and Language
+            document.documentElement.lang = currentLang;
+            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            
+            // Update Button Text
+            langBtn.textContent = currentLang === 'ar' ? 'EN' : 'AR';
+
+            // Translate Text Elements
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.getAttribute('data-translate');
+                if (translations[currentLang][key]) {
+                    el.textContent = translations[currentLang][key];
+                }
+            });
+        });
+    </script>
+</body> 
+</html>
