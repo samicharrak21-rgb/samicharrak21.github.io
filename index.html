@@ -148,11 +148,11 @@
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.8rem; font-weight: 700;
     text-transform: uppercase; letter-spacing: 0.05em;
-    padding-inline-start: 3rem;
+    flex-shrink: 0; will-change: transform;
   }
   .ticker span { display: inline-flex; align-items: center; gap: 0.6rem; }
   .ticker .star { color: #000; }
-  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-33.333%); } }
   html[dir="rtl"] .ticker { animation-direction: reverse; }
 
   /* ============ HEADER ============ */
@@ -242,14 +242,17 @@
       background: var(--bg); border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
       padding: 0.5rem 1rem;
-      box-shadow: 0 12px 24px rgba(0,0,0,0.25);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.18);
+      z-index: 80;
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
     }
     .nav.open { display: flex; }
     .nav-link { padding: 0.95rem 0.5rem; font-size: 0.95rem; border-bottom: 1px solid var(--line); }
     .nav-link:last-child { border-bottom: none; }
     .menu-toggle { display: grid; }
     .icon-btn { width: 36px; height: 36px; }
-    header { position: relative; }
+    header { position: sticky; top: 36px; z-index: 70; }
   }
 
   /* ============ MAIN GRID ============ */
@@ -737,15 +740,20 @@
   }
   .footer-mark {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(4rem, 16vw, 10rem);
+    font-size: clamp(2.5rem, 12vw, 10rem);
     font-weight: 700; letter-spacing: -0.04em;
-    line-height: 0.85;
+    line-height: 0.9;
     color: transparent;
     -webkit-text-stroke: 1px var(--line);
     margin-bottom: 1.5rem;
     user-select: none;
+    word-break: break-word;
+    overflow-wrap: anywhere;
   }
   .footer-mark em { font-family: 'Instrument Serif', serif; font-style: italic; -webkit-text-stroke: 1px var(--accent); }
+  @media (max-width: 768px) {
+    .footer-mark { font-size: clamp(2rem, 14vw, 4rem); letter-spacing: -0.02em; }
+  }
   .footer-meta {
     font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--ink-dim);
     display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
@@ -1031,7 +1039,7 @@
   const T = {
     ar: {
       navAbout:"نبذة", navSkills:"المهارات", navProjects:"المشاريع", navJourney:"المسيرة", navContact:"تواصل",
-      available:"متاح للمشاريع", loc:"تونس · عن بُعد",
+      available:"متاح للمشاريع", loc:"الجزائر · عن بُعد",
       heroName:`سامي <span class="ser">شراك</span>`,
       heroSub:`<b>مهندس واجهات أمامية</b> ومطور بوتات. أبني تجارب رقمية أنيقة، سريعة، ومنطقية — من واجهات React الحديثة إلى أتمتة ذكية على Discord و Telegram.`,
       seeWork:"شاهد الأعمال", contact:"تواصل",
@@ -1078,7 +1086,7 @@
     },
     en: {
       navAbout:"About", navSkills:"Skills", navProjects:"Work", navJourney:"Journey", navContact:"Contact",
-      available:"Available for work", loc:"Tunisia · Remote",
+      available:"Available for work", loc:"Algeria · Remote",
       heroName:`Sami <span class="ser">Charrak</span>`,
       heroSub:`<b>Frontend engineer</b> & bot developer. I craft fast, elegant, and meaningful digital experiences — from modern React interfaces to smart automation on Discord & Telegram.`,
       seeWork:"View work", contact:"Get in touch",
@@ -1127,7 +1135,7 @@
 
   /* ========== STATE ========== */
   let lang = localStorage.getItem("lang") || "ar";
-  let isLight = localStorage.getItem("theme") === "light";
+  let isLight = (localStorage.getItem("theme") || "light") === "light";
   if (isLight) document.documentElement.classList.add("light");
   let activeFilter = "all";
   const esc = s => String(s).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -1135,9 +1143,10 @@
   /* ========== TICKER ========== */
   function buildTicker(){
     const items = lang === "ar"
-      ? ["متاح للعمل ✦","مهندس واجهات ✦","مطور بوتات ✦","تونس → العالم ✦","مشاريع 2026 ✦","Frontend · Bots · AI ✦"]
-      : ["AVAILABLE FOR WORK ✦","FRONTEND ENGINEER ✦","BOT DEVELOPER ✦","TUNISIA → WORLDWIDE ✦","2026 PROJECTS ✦","FRONTEND · BOTS · AI ✦"];
+      ? ["متاح للعمل ✦","مهندس واجهات ✦","مطور بوتات ✦","الجزائر → العالم ✦","مشاريع 2026 ✦","Frontend · Bots · AI ✦"]
+      : ["AVAILABLE FOR WORK ✦","FRONTEND ENGINEER ✦","BOT DEVELOPER ✦","ALGERIA → WORLDWIDE ✦","2026 PROJECTS ✦","FRONTEND · BOTS · AI ✦"];
     const set = items.map(t => `<span>${t}</span>`).join("");
+    // 3 copies + translate -33.333% keeps marquee fully covered in both LTR and RTL
     document.getElementById("ticker").innerHTML = set + set + set;
   }
 
@@ -1308,7 +1317,7 @@
     mint:   { accent: "#2dd4a8", accentLight: "#0f9b76" },
     orange: { accent: "#ff5722", accentLight: "#c2410c" },
   };
-  let accent = localStorage.getItem("accent") || "mint";
+  let accent = localStorage.getItem("accent") || "orange";
   function applyAccent(){
     const a = ACCENTS[accent];
     document.documentElement.style.setProperty("--accent", a.accent);
