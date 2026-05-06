@@ -44,6 +44,43 @@
     --card: #ebe5d6;
     --accent: #0f9b76;
   }
+  /* Force light mode + full width on mobile devices */
+  @media (max-width: 768px) {
+    :root {
+      --bg: #f5f1e8;
+      --ink: #0a0a0a;
+      --ink-dim: #555;
+      --line: #d8d2c2;
+      --card: #ebe5d6;
+      --accent: #0f9b76;
+    }
+    #themeBtn { display: none !important; }
+    html, body {
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
+    }
+    .wrap, .header-inner {
+      max-width: 100% !important;
+      width: 100% !important;
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+    body::before {
+      background-image:
+        repeating-linear-gradient(135deg, rgba(0,0,0,0.04) 0 2px, transparent 2px 14px),
+        linear-gradient(180deg, transparent, rgba(0,0,0,0.04)) !important;
+    }
+    body::after {
+      background-image:
+        linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px),
+        radial-gradient(ellipse 60% 50% at 80% 0%, hsla(165, 65%, 40%, 0.12), transparent 60%),
+        radial-gradient(ellipse 50% 40% at 0% 100%, hsla(35, 80%, 50%, 0.10), transparent 60%) !important;
+    }
+  }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scroll-padding-top: 90px; }
   body {
@@ -318,7 +355,8 @@
     html[dir="rtl"] .hero-grid { text-align: right; }
     .hero-portrait { width: 220px; height: 260px; align-self: center; order: -1; padding: 0; }
     .hero-portrait::before { inset: -12px -12px 12px 12px; }
-    .hero-meta { font-size: 0.62rem; gap: 0.85rem; margin-bottom: 1rem; justify-content: center; }
+    .hero-meta { font-size: 0.62rem; gap: 0.6rem 0.85rem; margin-bottom: 1rem; justify-content: center; }
+    .hero { padding-top: 1.5rem; }
     .hero h1 { font-size: clamp(2.4rem, 13vw, 4.2rem); margin-bottom: 0.85rem; line-height: 0.95; }
     .hero-sub { font-size: 0.92rem; margin-bottom: 1.25rem; margin-inline: auto; }
     html[dir="rtl"] .hero-sub { text-align: right; }
@@ -359,6 +397,14 @@
     section.block { padding: 3rem 0; }
     .block-head { grid-template-columns: 1fr; gap: 0.5rem; margin-bottom: 2rem; }
     .block-meta { text-align: start; }
+    .block-title { font-size: clamp(1.7rem, 8vw, 2.4rem); line-height: 1.15; word-spacing: 0.15em; }
+    .block-title em { display: inline-block; margin: 0 0.15em; }
+    html[dir="rtl"] .hero h1 .ser,
+    html[dir="rtl"] .block-title em {
+      font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+      font-style: normal;
+      font-weight: 700;
+    }
   }
 
   /* ============ STATS BAR ============ */
@@ -647,7 +693,15 @@
     font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--ink-dim);
     word-break: break-all;
   }
-  @media (max-width: 768px) { .contact-block { padding: 3rem 0; } }
+  @media (max-width: 768px) {
+    .contact-block { padding: 3rem 0; }
+    .contact-title { font-size: clamp(1.9rem, 9vw, 2.8rem); line-height: 1.25; word-spacing: 0.1em; }
+    .contact-title em {
+      font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+      font-style: normal; font-weight: 700;
+      display: inline-block; margin: 0 0.15em;
+    }
+  }
 
   /* ============ DISCORD STRIP ============ */
   .discord-strip {
